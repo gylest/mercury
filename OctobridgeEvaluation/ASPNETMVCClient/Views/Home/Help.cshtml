@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Help";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h3>Tag Helpers</h3>
+<p>Tag Helpers enable server-side code to participate in creating and rendering HTML elements in Razor files.</p>
+
+<p>Create customer tag, for example:</p>
+
+<p><b>&lt;email&gt;Support&lt;/email&gt;</b></p>
+<p>Becomes ...</p>
+<p><b>&lt;a href="mailto:Support@contoso.com"&gt;Support@contoso.com&lt;/a&gt;</b></p>
+
+<p>Use a built-in tag, for example:</p>
+
+<p><b>&lt;a asp-controller="Home" asp-action="Privacy"&gt;Privacy&lt;/a&gt;</b></p>
+<p>Becomes ...</p>
+<p><b>&lt;a ref="/Home/Privacy"&gt;Privacy&lt;/a&gt;</b></p>

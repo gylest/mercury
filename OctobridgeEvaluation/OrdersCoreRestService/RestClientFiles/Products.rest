@@ -1,0 +1,41 @@
+### Get a product by ID
+GET https://localhost:44366/api/v1/products/1
+Accept: application/json
+
+### Get a product by ID from verison 2 - 400 error expected
+GET https://localhost:44366/api/v2/products/1
+Accept: application/json
+
+### Get all products
+GET https://localhost:44366/api/v1/products
+Accept: application/json
+
+### Create a new product - Expect 201
+POST https://localhost:44366/api/v1/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sample Product",
+  "productNumber": "SP-002333",
+  "productCategoryId": 1,
+  "cost": 99.99
+}
+
+### Update an existing product  - Expect 204
+PUT https://localhost:44366/api/v1/products/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productId": 1,
+  "name": "Updated Product",
+  "productNumber": "SP-001-UPD",
+  "productCategoryId": 1,
+  "cost": 109.99,
+  "RecordModified": "{{$datetime iso8601}}"
+}
+
+### Delete a product by ID
+DELETE https://localhost:44366/api/v1/products/9999
+Accept: application/json

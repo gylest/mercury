@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>OctobridgeDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a2521637-0319-427a-8355-f50f0d9d7422}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>OctobridgeEvaluation</RootNamespace>
+    <AssemblyName>OctobridgeEvaluation</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetDatabase>OctobridgeDatabase</TargetDatabase>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Triggers" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Types" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Order.sql" />
+    <Build Include="dbo\Triggers\OrderTrigger.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\AddOrder.sql" />
+    <Build Include="dbo\Tables\Customer.sql" />
+    <Build Include="dbo\Stored Procedures\GetCustomersByName.sql" />
+    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Types\NameType.sql" />
+    <Build Include="dbo\Tables\Attachment.sql" />
+    <Build Include="dbo\Stored Procedures\AddAttachment.sql" />
+    <Build Include="dbo\Stored Procedures\GetAttachmentData.sql" />
+    <Build Include="dbo\Stored Procedures\GetAttachmentsByName.sql" />
+    <Build Include="dbo\Tables\CodedValue.sql" />
+    <Build Include="dbo\Tables\ProductCategory.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteCustomerById.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateCustomerById.sql" />
+    <Build Include="dbo\Stored Procedures\AddCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateProductById.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteAttachmentById.sql" />
+    <Build Include="dbo\Tables\OrderDetail.sql" />
+    <Build Include="dbo\Tables\OrderAudit.sql" />
+    <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductsByNameNumber.sql" />
+    <Build Include="dbo\Stored Procedures\AddProduct.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteProductById.sql" />
+    <Build Include="dbo\Stored Procedures\GetOrderDetailsByOrderId.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Octobridge.publish.xml" />
+    <None Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+</Project>

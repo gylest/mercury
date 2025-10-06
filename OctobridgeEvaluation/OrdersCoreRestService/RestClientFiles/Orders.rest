@@ -1,0 +1,36 @@
+### Get all orders
+GET https://localhost:44366/api/v1/orders
+Accept: application/json
+
+### Get an order by ID
+GET https://localhost:44366/api/v1/orders/1
+Accept: application/json
+
+### Create a new order
+POST https://localhost:44366/api/v1/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customerId": 1,
+  "orderDate": "2025-09-12T10:00:00",
+  "totalAmount": 199.99,
+  "status": "Pending"
+}
+
+### Update an existing order
+PUT https://localhost:44366/api/v1/orders/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "orderId": 1,
+  "customerId": 1,
+  "orderDate": "2025-09-12T10:00:00",
+  "totalAmount": 249.99,
+  "status": "Completed"
+}
+
+### Delete an order by ID
+DELETE https://localhost:44366/api/v1/orders/1
+Accept: application/json

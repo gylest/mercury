@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MVCClient.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <p>This controller uses an in-memory database for storage, which is initially seeded with several movies.</p>
+</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><td>Name</td><td>Star</td><td>YearReleased</td><td>Rating</td></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Star</td>
+                    <td>@p.YearReleased</td>
+                    <td>@p.Rating</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a class="btn btn-primary" asp-action="Create">
+            Create a Movie
+        </a>
+    </div>

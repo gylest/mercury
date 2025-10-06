@@ -1,0 +1,87 @@
+<h2>{{getHeading()}}</h2>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-full-width">
+
+  <div formGroupName="order">
+
+    <mat-form-field class="input-full-width" [hidden]="hideFields">
+      <input matInput type="number" placeholder="Id" formControlName="id" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Order Status" formControlName="orderStatus" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Customer Id" formControlName="customerId" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Freight Amount" formControlName="freightAmount" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Sub Total" formControlName="subTotal" [readonly]="readonlyFields">
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Total Due" formControlName="totalDue" [readonly]="readonlyFields">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerPayment" formControlName="paymentDate" placeholder="Payment Date">
+      <mat-datepicker-toggle matSuffix [for]="pickerPayment"></mat-datepicker-toggle>
+      <mat-datepicker #pickerPayment></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput formControlName="shippedDate" [matDatepicker]="pickerShipped" placeholder="Shipped Date" [readonly]="readonlyFields" required>
+      <mat-datepicker-toggle matSuffix [for]="pickerShipped"></mat-datepicker-toggle>
+      <mat-datepicker #pickerShipped [disabled]="readonlyFields"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput formControlName="cancelDate" [matDatepicker]="pickerCancel" placeholder="Cancel Date" [readonly]="readonlyFields" required>
+      <mat-datepicker-toggle matSuffix [for]="pickerCancel"></mat-datepicker-toggle>
+      <mat-datepicker #pickerCancel [disabled]="readonlyFields"></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+
+  <div formGroupName="display">
+
+    <mat-form-field class="input-full-width" [hidden]="hideFields">
+      <input matInput type="text" placeholder="Record Modified" formControlName="recordModifiedString" readonly>
+    </mat-form-field>
+
+  </div>
+
+</form>
+
+<mat-table class="mat-elevation-z8" [dataSource]=" dataSource">
+
+  <ng-container matColumnDef="productId">
+    <mat-header-cell *matHeaderCellDef>Product Id</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.productId}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="unitPrice">
+    <mat-header-cell *matHeaderCellDef>Unit Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">£{{element.unitPrice}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<div class="basic-button-row">
+  <button type="button" mat-raised-button class="btn-secondary" (mousedown)="cancel()">Cancel</button>&nbsp;
+  <button type="submit" mat-raised-button class="btn btn-success" [hidden]="readonlyFields">Submit</button>
+</div>
