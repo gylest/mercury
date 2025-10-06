@@ -1,0 +1,30 @@
+.header-toolbar {
+  /* FIX: Added explicit CSS for sticky position as a fallback for Tailwind */
+  position: sticky;
+  top: 0;
+  /* Overrides default material background to match Tailwind's bg-white */
+  background-color: white;
+  height: 64px;
+  padding: 0 24px;
+  border-bottom: 2px solid theme('colors.indigo.200');
+}
+
+/* FIX: The CSS rule that enforces right-alignment */
+.nav-controls {
+  margin-left: auto;
+}
+
+/* FIX: Custom class that pulls the color directly from the Angular Material primary theme palette */
+.logo-color {
+  /* This variable is set by the Angular Material theme (e.g., Indigo/Pink) */
+  color: var(--mdc-theme-primary, #5e53ff);
+}
+
+/* Custom style for the example avatar image on the side (no longer used, but kept for context) */
+.example-header-image {
+  background-image: url('https://placehold.co/40x40/5e53ff/ffffff?text=O');
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+}

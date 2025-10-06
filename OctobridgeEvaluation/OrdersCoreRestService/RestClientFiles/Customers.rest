@@ -1,0 +1,55 @@
+### Get all customers from v1
+GET https://localhost:44366/api/v1/customers
+Accept: application/json
+
+### Get all customers from v2
+GET https://localhost:44366/api/v2/customers
+Accept: application/json
+
+### Get a customer by ID from v1
+GET https://localhost:44366/api/v1/customers/1
+Accept: application/json
+
+### Get a customer by ID from v2
+GET https://localhost:44366/api/v2/customers/1
+Accept: application/json
+
+### Get customers by lastName and firstName from v1
+GET https://localhost:44366/api/v1/customers?lastName=Gyles&firstName=
+Accept: application/json
+
+### Get all customers from v3 - expect 404 (not found) as v3 is not implemented
+GET https://localhost:44366/api/v3/customers
+Accept: application/json
+
+### Delete a customer by ID from v1 - expect 404 as customer does not exist
+DELETE https://localhost:44366/api/v1/customers/99999
+Accept: application/json
+
+### Create a new customer
+POST https://localhost:44366/api/v1/customers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "phone": "123-456-7890",
+  "addressLine1": "123 Main Street",
+  "postalcode":"60606",
+  "telephone":"",
+  "city": "Anytown"
+}
+
+### Update an existing customer
+PUT https://localhost:44366/api/v1/customers/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "city": "Manchester",
+  "telephone": "0987654321",
+  "email": "john.smith@newdomain.com"
+}

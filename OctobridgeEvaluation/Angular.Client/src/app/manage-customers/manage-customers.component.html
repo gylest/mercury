@@ -1,0 +1,62 @@
+<div class="p-8">
+  <mat-card class="customer-card-container">
+
+    <!-- Updated Title Section to include "Add Customer" Button -->
+    <div class="card-header-flex">
+      <mat-card-title class="card-title-text">
+        Customer Inventory ({{ dataSource.data.length }} Items)
+      </mat-card-title>
+      <button mat-flat-button class="add-customer-btn" (click)="addCustomer()">
+        <!-- FIX: Replaced <mat-icon>add</mat-icon> with a simple plus sign character (+) -->
+        <span class="plus-icon">+</span> Add Customer
+      </button>
+    </div>
+
+    <mat-card-content>
+
+      <div class="table-container shadow-md rounded-lg overflow-hidden">
+        <table mat-table [dataSource]="dataSource" class="w-full">
+
+          <!-- Map Column Definitions -->
+          <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+            <!-- Header Cell -->
+            <th mat-header-cell *matHeaderCellDef class="table-header-cell">
+              {{ formatHeader(col) }}
+            </th>
+
+            <!-- Data Cell -->
+            <td mat-cell *matCellDef="let row">
+              <!-- Conditional rendering for Action buttons -->
+              @if (col === 'action') {
+              <button mat-flat-button class="action-btn edit-btn" (click)="editCustomer(row)">
+                Edit
+              </button>
+              <button mat-flat-button class="action-btn delete-btn" (click)="deleteCustomer(row)">
+                Delete
+              </button>
+              } @else if (col === 'recordModified') {
+              {{ row[col] | date:'dd/MM/yyyy HH:mm:ss' }}
+              } @else {
+              {{ row[col] }}
+              }
+            </td>
+          </ng-container>
+
+          <!-- Header Row (CRITICAL: Must be processed correctly by *matHeaderRowDef) -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header-row"></tr>
+          <!-- Data Rows -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-data-row"></tr>
+        </table>
+      </div>
+
+    </mat-card-content>
+
+    <!-- Paginator Control -->
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"
+                   showFirstLastButtons
+                   pageSize="10"
+                   [length]="dataSource.data.length"
+                   class="paginator-control"></mat-paginator>
+
+  </mat-card>
+</div>

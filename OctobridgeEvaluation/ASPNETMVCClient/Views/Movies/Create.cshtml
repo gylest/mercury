@@ -1,0 +1,36 @@
+﻿@model MVCClient.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3 class="text-left">Movie</h3>
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Star">Star:</label>
+        <input asp-for="Star" class="form-control" />
+        <span asp-validation-for="Star" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="YearReleased">Year Released:</label>
+        <input asp-for="YearReleased" class="form-control" />
+        <span asp-validation-for="YearReleased" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating">Rating:</label>
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

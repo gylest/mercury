@@ -1,0 +1,42 @@
+<h2>{{getHeading()}}</h2>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-full-width">
+
+  <div formGroupName="product">
+
+    <mat-form-field class="input-full-width" [hidden]="hideFields">
+      <input matInput type="number" placeholder="Product Id" formControlName="productId" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Name" formControlName="name" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Product Number" formControlName="productNumber" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="text" placeholder="Product Category Id" formControlName="productCategoryId" [readonly]="readonlyFields">
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput type="number" placeholder="Cost" formControlName="cost" [readonly]="readonlyFields" required>
+    </mat-form-field>
+
+  </div>
+
+  <div formGroupName="display">
+
+    <mat-form-field class="input-full-width" [hidden]="hideFields">
+      <input matInput type="text" placeholder="Record Modified" formControlName="recordModifiedString" readonly>
+    </mat-form-field>
+
+  </div>
+
+  <div class="basic-button-row">
+    <button type="button" mat-raised-button class="btn-secondary" (mousedown)="cancel()">Cancel</button>&nbsp;
+    <button type="submit" mat-raised-button class="btn btn-success">Submit</button>
+  </div>
+
+</form>
