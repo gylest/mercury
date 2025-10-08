@@ -90,7 +90,7 @@ Base route: `/api/Attachments`
 The application uses Serilog for logging. The logging configuration is in the appsettings.json file.  
 
 Log settings:  
-1. Sinks enabled for logging to console and File  
+1. Sinks enabled for logging to console and file  
 2. Default Log Level =  Information  
 3. Log File stored in logs/log-.txt (daily rolling)  
 4. A new log file is created each day  
