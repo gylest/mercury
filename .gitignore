@@ -331,3 +331,6 @@ ASALocalRun/
 
 # MSBuild generated file
 *.GeneratedMSBuildEditorConfig.editorconfig
+
+# Serilog log files
+**/logs/log-*.txt

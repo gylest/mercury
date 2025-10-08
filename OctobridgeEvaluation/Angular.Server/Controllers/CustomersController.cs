@@ -34,10 +34,16 @@ namespace AngularClient.Controllers
                 if ((lastName is null) && (firstName is null))
                 {
                     customers = customersService.GetAllCustomers();
+
+                    // Log 
+                    _logger.LogInformation($"Customers (Get All): Count: {customers.Count}");
                 }
                 else
                 {
-                    customers = customersService.GetCustomersByName(lastName, firstName);
+                    customers = customersService.GetCustomersByName(lastName ?? string.Empty, firstName ?? string.Empty);
+
+                    // Log 
+                    _logger.LogInformation($"Customers (Get By Name): LastName: {lastName ?? string.Empty} FirstName: {firstName ?? string.Empty} Count: {customers.Count}");
                 }
 
                 return Ok(customers);
@@ -63,7 +69,7 @@ namespace AngularClient.Controllers
 
                 // Log 
                 string customerJson = JsonSerializer.Serialize(customer);
-                _logger.LogInformation($"Customer (Post): {customerJson}");
+                _logger.LogInformation($"Customers (Add): {customerJson}");
 
                 return Ok(customer);
             }
@@ -85,6 +91,7 @@ namespace AngularClient.Controllers
                 }
 
                 customersService.UpdateCustomer(customer);
+                _logger.LogInformation($"Customers (Update): FirstName: {customer.FirstName} LastName: {customer.LastName} Address Line 1: {customer.AddressLine1}");
 
                 return Ok(customer);
             }

@@ -1,4 +1,6 @@
 ﻿
+using Serilog;
+
 namespace AngularApp8.Server
 {
     public class Program
@@ -7,8 +9,11 @@ namespace AngularApp8.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add serilog services to the container and read config from appsettings
+            builder.Host.UseSerilog((context, configuration) =>
+                configuration.ReadFrom.Configuration(context.Configuration));
 
+            // Add services to the container.
             builder.Services.AddControllers();
 
             builder.Services.AddCors(options =>
@@ -35,15 +40,11 @@ namespace AngularApp8.Server
                 app.MapOpenApi();
             }
 
+            app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
-
             app.UseCors();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.MapFallbackToFile("/index.html");
 
             app.Run();
