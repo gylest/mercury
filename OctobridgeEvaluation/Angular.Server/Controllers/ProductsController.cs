@@ -58,6 +58,10 @@ namespace AngularClient.Controllers
             {
                 product = productsService.GetProductById(productId);
 
+                // log
+                string productJsonString = JsonSerializer.Serialize(product);
+                _logger.LogInformation($"Products (Get by Id): {productJsonString}");
+
                 return Ok(product);
             }
             catch (Exception exc)
@@ -81,7 +85,7 @@ namespace AngularClient.Controllers
 
                 // log
                 string productJson = JsonSerializer.Serialize(product);
-                _logger.LogInformation($"Product (Post): {productJson}");
+                _logger.LogInformation($"Products (Add): {productJson}");
 
                 return Ok(product);
             }
@@ -121,6 +125,7 @@ namespace AngularClient.Controllers
             try
             {
                 productsService.DeleteProduct(id);
+                _logger.LogInformation($"Products (Delete): ID: {id}");
 
                 return Ok();
             }

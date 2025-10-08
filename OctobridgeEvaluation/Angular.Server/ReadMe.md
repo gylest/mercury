@@ -85,12 +85,25 @@ Base route: `/api/Attachments`
 
 ---
 
+## Serilog Logging
+
+The application uses Serilog for logging. The logging configuration is in the appsettings.json file.  
+
+Log settings:  
+1. Sinks enabled for logging to console and file  
+2. Default Log Level =  Information  
+3. Log File stored in logs/log-.txt (daily rolling)  
+4. A new log file is created each day  
+5. Retain log files for 28 days  
+
+---
+
 ## Getting Started
 
 1. Restore NuGet packages.
 2. Update your connection string in `appsettings.json` if needed.
 3. Build and run the project using Visual Studio or `dotnet run`.
-4. The API will be available at `https://localhost:63498/` (or your configured port).
+4. The API will be available at <https://localhost:63498/> (or your configured port).
 
 ## Notes
 

@@ -60,7 +60,7 @@ namespace AngularClient.Controllers
 
                 // log
                 string orderJson = JsonSerializer.Serialize(order);
-                _logger.LogInformation($"Order (Post): {orderJson}");
+                _logger.LogInformation($"Orders (Add): {orderJson}");
 
                 return Ok(order);
             }

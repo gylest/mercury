@@ -32,6 +32,9 @@ namespace AngularClient.Controllers
             {
                 Attachment[] attachments = attachmentsService.GetAttachments(fileName);
 
+                // Log 
+                _logger.LogInformation($"Attachments (Get): Filename: {fileName ?? string.Empty} Count: {attachments.Length}");
+
                 return Ok(attachments);
             }
             catch (Exception exc)
@@ -100,7 +103,7 @@ namespace AngularClient.Controllers
 
                         // Log 
                         string attachmentJson = JsonSerializer.Serialize(attachment);
-                        _logger.LogInformation($"Attachment (Post): {attachmentJson}");
+                        _logger.LogInformation($"Attachments (Add): {attachmentJson}");
                     }
                 }
 
@@ -119,6 +122,9 @@ namespace AngularClient.Controllers
             try
             {
                 attachmentsService.DeleteFile(id);
+
+                // Log 
+                _logger.LogInformation($"Attachments (Delete): ID: {id}");
 
                 return Ok();
             }
