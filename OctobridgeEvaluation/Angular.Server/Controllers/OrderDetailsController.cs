@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace AngularClient.Controllers
 {
     [Route("api/[controller]")]
-    //  [ApiController]
+    [ApiController]
     public class OrderDetailsController : ControllerBase
     {
         readonly OrderDetailsService orderDetailsService;

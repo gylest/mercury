@@ -85,6 +85,17 @@ Base route: `/api/Attachments`
 
 ---
 
+## Swagger UI
+
+   - Swagger is enabled for interactive API documentation and testing.  
+   - Access Swagger UI at: <https://localhost:7273/swagger>  
+   - Explore API Endpoints.View all available REST endpoints for entities like customers, orders, products, order details, and attachments.  
+   - View Request/Response Schemas: Inspect the expected request body, query parameters, route parameters, and response formats for each endpoint.  
+   - Try Out Endpoints: Send test requests directly from the browser to your API (GET, POST, PUT, DELETE, etc.) and see the results.  
+   - Inspect Results: View the actual response data, status codes, and headers returned by the API.  
+
+---
+
 ## Serilog Logging
 
 The application uses Serilog for logging. The logging configuration is in the appsettings.json file.  

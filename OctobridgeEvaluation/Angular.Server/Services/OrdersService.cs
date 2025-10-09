@@ -167,6 +167,7 @@ namespace AngularClient.Services
 
         }
 
+        // BUG: Stored procedure "UpdateOrder" needs to be created in the database
         public void UpdateOrder(Order order, DateTime orderDate)
         {
             using (SqlConnection sqlConnection = new SqlConnection(this._connectionString))
