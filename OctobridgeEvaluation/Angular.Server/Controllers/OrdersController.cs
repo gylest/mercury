@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace AngularClient.Controllers
 {
     [Route("api/[controller]")]
-    //  [ApiController]
+    [ApiController]
     public class OrdersController : ControllerBase
     {
         readonly OrdersService ordersService;
@@ -72,7 +72,7 @@ namespace AngularClient.Controllers
 
         // PUT: api/Orders/5
         [HttpPut("{id}")]
-        public ActionResult<Order> Put(int id, [FromBody] Order order, [FromBody] DateTime orderDate)
+        public ActionResult<Order> Put(int id, [FromBody] Order order, [FromQuery] DateTime orderDate)
         {
             if (order == null)
             {

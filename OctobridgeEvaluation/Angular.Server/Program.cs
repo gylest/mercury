@@ -40,6 +40,11 @@ namespace AngularApp8.Server
                 app.MapOpenApi();
             }
 
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/openapi/v1.json", "v1");
+            });
+
             app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
             app.UseCors();

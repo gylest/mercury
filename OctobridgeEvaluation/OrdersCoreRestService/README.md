@@ -24,7 +24,18 @@ Customers         | GET, POST, PUT, DELETE   | api/v1/customers?lastName=Gyles&f
 Orders            | GET, POST, PUT, DELETE   | api/v1/orders/5
 Products          | GET, POST, PUT, DELETE   | api/v1/products/4
 
-Customers supports ```api/v2``` and the GET operations return upper case data. 
+Customers supports ```api/v2``` and the GET operations return upper case data.  
+
+---
+
+## Swagger UI
+
+   - Swagger is enabled for interactive API documentation and testing.
+   - Access Swagger UI at: <https://localhost:44366/swagger>
+   - Use Swagger to explore and test all available endpoints, including each API version (e.g., v1, v2). You can view request/response schemas, try out endpoints, and inspect results directly in the browser.
+   - Swagger also provides generated JSON for each API version, e.g.:
+     - <https://localhost:44366/swagger/v1/swagger.json>
+     - <https://localhost:44366/swagger/v2/swagger.json>
 
 ---
 
@@ -35,25 +46,12 @@ Customers supports ```api/v2``` and the GET operations return upper case data.
    - To use: Open a `.rest` file, select a request, and run it to send HTTP requests to the API endpoints. This allows you to quickly verify responses, status codes, and payloads for each controller and method.
    - `.rest` files are especially useful for regression testing and verifying changes during development.
 
-2. Swagger UI
-   - Swagger is enabled for interactive API documentation and testing.
-   - Access Swagger UI at: <https://localhost:44366/swagger>
-   - Use Swagger to explore and test all available endpoints, including each API version (e.g., v1, v2). You can view request/response schemas, try out endpoints, and inspect results directly in the browser.
-   - Swagger also provides generated JSON for each API version, e.g.:
-     - <https://localhost:44366/swagger/v1/swagger.json>
-     - <https://localhost:44366/swagger/v2/swagger.json>
-
-3. Postman
+2. Postman
    - The Orders endpoints require Basic Authentication and must be tested using Postman.
    - In Postman, set the request type and URL for the Orders API (e.g., `https://localhost:44366/api/v1/orderscore`).
    - Under the "Authorization" tab, select "Basic Auth" and enter the required username and password.
    - Send requests (GET, POST, PUT, DELETE) to verify authentication and endpoint functionality.
    - Use Postman to confirm correct responses, error handling, and security for all Orders API methods.
-
-4. General Testing Workflow
-   - Make the project the startup project in Visual Studio.
-   - Use breakpoints and the debug toolbar for step-by-step debugging.
-   - Use `.rest` files, Swagger UI, and Postman to manually test endpoints and verify API behavior for all supported versions.
 
 ---
 
