@@ -1,3 +1,3 @@
 ### Get an attachment by ID
-GET https://localhost:44366/api/v1/attachments/1
+GET https://localhost:44366/api/v1/attachments/3
 Accept: application/json

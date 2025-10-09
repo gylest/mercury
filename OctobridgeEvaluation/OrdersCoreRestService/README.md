@@ -72,9 +72,9 @@ Customers supports ```api/v2``` and the GET operations return upper case data.
 
 ### Prerequisites
 
-- .NET 9 SDK
-- SQL Server 2017 or later
-- Visual Studio 2022 or later
+- .NET 9 SDK  
+- SQL Server 2022 or later  
+- Visual Studio 2022 or later  
 
 ---
 
