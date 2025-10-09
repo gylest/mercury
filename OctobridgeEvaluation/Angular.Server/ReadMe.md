@@ -109,19 +109,11 @@ Log settings:
 
 ---
 
-## Getting Started
-
-1. Restore NuGet packages.
-2. Update your connection string in `appsettings.json` if needed.
-3. Build and run the project using Visual Studio or `dotnet run`.
-4. The API will be available at <https://localhost:63498/> (or your configured port).
-
 ## Notes
 
 - Ensure CORS is enabled if accessing from a frontend on a different port.
 - Logging is implemented for key operations.
 - The API expects and returns JSON.
-- For full API documentation, consider enabling Swagger/OpenAPI in development.
 
 ## License
 
