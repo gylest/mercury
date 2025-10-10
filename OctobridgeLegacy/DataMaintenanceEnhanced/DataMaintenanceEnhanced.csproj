@@ -23,7 +23,7 @@
   
   <PropertyGroup>
     <AssemblyTitle>DataMaintenanceEnhanced</AssemblyTitle>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
     <FileVersion>1.2.0.0</FileVersion>
     <Company>Octobridge</Company>
   </PropertyGroup>
