@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
+using System.Diagnostics;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
+using Microsoft.Extensions.Options;
 
 namespace DataMaintenanceEnhanced
 {
@@ -16,16 +15,24 @@ namespace DataMaintenanceEnhanced
     /// </summary>
     public partial class MainWindow : Window
     {
+        // The IOptions<T> gives you access to the bound configuration values.
+        private readonly AppSettings _appSettings;
+
         readonly HttpClient client  = new();
-        readonly Uri        rootURI = new(ConfigurationManager.AppSettings["rootURI"]);
-        readonly Uri        productsURI = new(ConfigurationManager.AppSettings["productsURI"], UriKind.Relative);
+        readonly Uri        rootURI;
+        readonly Uri        productsURI;
 
         List<Product> products;
 
-        public MainWindow()
+        public MainWindow(IOptions<AppSettings> appSettings)
         {
             // Initialize component
             InitializeComponent();
+
+            // Unwrap the IOptions<T> to get the settings object
+            _appSettings = appSettings.Value;
+            rootURI = new Uri(_appSettings.RootURI);
+            productsURI = new Uri(_appSettings.ProductsURI, UriKind.Relative);
 
             // Set data format
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

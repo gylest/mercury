@@ -23,11 +23,13 @@ A Visual C# .NET 9 Windows application for managing data via a RESTful service.
 
 ### Configuration
 
-Edit `App.config` to set the correct API endpoints:
+Edit `appsettings.json` to set the correct API endpoints:
 
 ```json
-<add key="rootURI" value="https://localhost:44366/" />
-<add key="productsURI" value="api/v1/product" />
+  "AppSettings": {
+    "productsURI": "api/v1/products",
+    "rootURI": "https://localhost:44366/"
+  }
 ```
 
 ### Running the Application
