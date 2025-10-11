@@ -4,10 +4,23 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Company>Octobridge</Company>
     <Authors>Tony Gyles</Authors>
     <Copyright>Copyright ©2025</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.Windows" />
+    <Using Include="System.Diagnostics" />
+    <Using Include="System.Globalization" />
+    <Using Include="System.Net.Http" />
+    <Using Include="System.Net.Http.Headers" />
+    <Using Include="Microsoft.Extensions.Hosting" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="Microsoft.Extensions.Configuration" />
+    <Using Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
