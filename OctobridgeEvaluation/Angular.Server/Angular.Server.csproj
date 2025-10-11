@@ -17,7 +17,6 @@
     <Using Include="Microsoft.Data.SqlClient"/>
     <Using Include="AngularServer.Models" />
     <Using Include="AngularServer.Services" />
-    <Using Include="Serilog"/>
   </ItemGroup>
 
   <ItemGroup>

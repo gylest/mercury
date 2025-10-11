@@ -1,4 +1,6 @@
-﻿namespace AngularServer.Server;
+﻿using Serilog;
+
+namespace AngularServer.Server;
 
 public class Program
 {
