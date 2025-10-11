@@ -5,9 +5,9 @@
 public class OrderDetailsController : ControllerBase
 {
     readonly OrderDetailsService orderDetailsService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<OrderDetailsController> _logger;
 
-    public OrderDetailsController(IConfiguration configuration, Serilog.ILogger logger)
+    public OrderDetailsController(IConfiguration configuration, ILogger<OrderDetailsController> logger)
     {
         orderDetailsService = new OrderDetailsService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -25,7 +25,7 @@ public class OrderDetailsController : ControllerBase
 
             // Log 
             string cvJson = JsonSerializer.Serialize(orderDetails);
-            _logger.Information($"OrderDetails (Get): {cvJson}");
+            _logger.LogInformation($"OrderDetails (Get): {cvJson}");
 
             return Ok(orderDetails);
         }

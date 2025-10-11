@@ -5,9 +5,9 @@
 public class OrdersController : ControllerBase
 {
     readonly OrdersService ordersService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<OrdersController> _logger;
 
-    public OrdersController(IConfiguration configuration, Serilog.ILogger logger)
+    public OrdersController(IConfiguration configuration, ILogger<OrdersController> logger)
     {
         ordersService = new OrdersService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -51,7 +51,7 @@ public class OrdersController : ControllerBase
 
             // log
             string orderJson = JsonSerializer.Serialize(order);
-            _logger.Information($"Orders (Add): {orderJson}");
+            _logger.LogInformation($"Orders (Add): {orderJson}");
 
             return Ok(order);
         }

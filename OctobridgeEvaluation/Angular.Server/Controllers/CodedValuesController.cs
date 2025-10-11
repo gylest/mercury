@@ -5,9 +5,9 @@
 public class CodedValuesController : ControllerBase
 {    
     readonly CodedValuesService codedValuesService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<CodedValuesController> _logger;
 
-    public CodedValuesController(IConfiguration configuration, Serilog.ILogger logger)
+    public CodedValuesController(IConfiguration configuration, ILogger<CodedValuesController> logger)
     {
         codedValuesService = new CodedValuesService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -25,7 +25,7 @@ public class CodedValuesController : ControllerBase
 
             // Log 
             string cvJson = JsonSerializer.Serialize(codedValues);
-            _logger.Information($"CodedValues (Get): {cvJson}");
+            _logger.LogInformation($"CodedValues (Get): {cvJson}");
 
             return Ok(codedValues);
         }

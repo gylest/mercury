@@ -5,9 +5,9 @@
 public class CustomersController : ControllerBase
 {
     readonly CustomersService customersService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<CustomersController> _logger;
 
-    public CustomersController(IConfiguration configuration, Serilog.ILogger logger)
+    public CustomersController(IConfiguration configuration, ILogger<CustomersController> logger)
     {
         customersService = new CustomersService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -27,14 +27,14 @@ public class CustomersController : ControllerBase
                 customers = customersService.GetAllCustomers();
 
                 // Log 
-                _logger.Information($"Customers (Get All): Count: {customers.Count}");
+                _logger.LogInformation($"Customers (Get All): Count: {customers.Count}");
             }
             else
             {
                 customers = customersService.GetCustomersByName(lastName ?? string.Empty, firstName ?? string.Empty);
 
                 // Log 
-                _logger.Information($"Customers (Get By Name): LastName: {lastName ?? string.Empty} FirstName: {firstName ?? string.Empty} Count: {customers.Count}");
+                _logger.LogInformation($"Customers (Get By Name): LastName: {lastName ?? string.Empty} FirstName: {firstName ?? string.Empty} Count: {customers.Count}");
             }
 
             return Ok(customers);
@@ -60,7 +60,7 @@ public class CustomersController : ControllerBase
 
             // Log 
             string customerJson = JsonSerializer.Serialize(customer);
-            _logger.Information($"Customers (Add): {customerJson}");
+            _logger.LogInformation($"Customers (Add): {customerJson}");
 
             return Ok(customer);
         }
@@ -82,7 +82,7 @@ public class CustomersController : ControllerBase
             }
 
             customersService.UpdateCustomer(customer);
-            _logger.Information($"Customers (Update): FirstName: {customer.FirstName} LastName: {customer.LastName} Address Line 1: {customer.AddressLine1}");
+            _logger.LogInformation($"Customers (Update): FirstName: {customer.FirstName} LastName: {customer.LastName} Address Line 1: {customer.AddressLine1}");
 
             return Ok(customer);
         }

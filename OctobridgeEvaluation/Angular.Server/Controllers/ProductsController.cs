@@ -5,9 +5,9 @@
 public class ProductsController : ControllerBase
 {
     readonly ProductsService productsService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<ProductsController> _logger;
 
-    public ProductsController(IConfiguration configuration, Serilog.ILogger logger)
+    public ProductsController(IConfiguration configuration, ILogger<ProductsController> logger)
     {
         productsService = new ProductsService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -51,7 +51,7 @@ public class ProductsController : ControllerBase
 
             // log
             string productJsonString = JsonSerializer.Serialize(product);
-            _logger.Information($"Products (Get by Id): {productJsonString}");
+            _logger.LogInformation($"Products (Get by Id): {productJsonString}");
 
             return Ok(product);
         }
@@ -76,7 +76,7 @@ public class ProductsController : ControllerBase
 
             // log
             string productJson = JsonSerializer.Serialize(product);
-            _logger.Information($"Products (Add): {productJson}");
+            _logger.LogInformation($"Products (Add): {productJson}");
 
             return Ok(product);
         }
@@ -116,7 +116,7 @@ public class ProductsController : ControllerBase
         try
         {
             productsService.DeleteProduct(id);
-            _logger.Information($"Products (Delete): ID: {id}");
+            _logger.LogInformation($"Products (Delete): ID: {id}");
 
             return Ok();
         }

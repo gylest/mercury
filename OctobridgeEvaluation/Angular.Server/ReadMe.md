@@ -98,6 +98,8 @@ Base route: `/api/Attachments`
 
 ## Serilog Logging
 
+### Overview
+
 The application uses Serilog for logging. The logging configuration is in the appsettings.json file.  
 
 Log settings:  
@@ -106,6 +108,19 @@ Log settings:
 3. Log File stored in logs/log-.txt (daily rolling)  
 4. A new log file is created each day  
 5. Retain log files for 28 days  
+
+### Serilog and ASP.NET Core Integration
+
+Even though Serilog is doing the logging in the controllers we still use the standard ASP.NET Core logging interface (ILogger<T>) in the controllers.  
+This is a common practice and is recommended by the Serilog documentation.  
+
+When you inject ILogger<T>, you are working with the Microsoft `standard` logging interface. This interface uses the generic Log* methods.  
+
+When you call _logger.LogInformation(...), the call is routed through the ASP.NET Core logging infrastructure, which then passes the message to the configured logging provider—in this case, Serilog.  
+
+Serilog intercepts this message and handles it using its powerful features (like structured logging, filtering, and sending to sinks).  
+This approach allows you to leverage Serilog's capabilities while still adhering to the standard logging practices in ASP.NET Core applications.  
+This also makes it easier to switch logging providers in the future if needed, as your application code remains ``decoupled`` from the specific logging implementation.  
 
 ---
 

@@ -5,9 +5,9 @@
 public class AttachmentsController : ControllerBase
 {
     readonly AttachmentsService attachmentsService;
-    private readonly Serilog.ILogger _logger;
+    private readonly ILogger<AttachmentsController> _logger;
 
-    public AttachmentsController(IConfiguration configuration, Serilog.ILogger logger)
+    public AttachmentsController(IConfiguration configuration, ILogger<AttachmentsController> logger)
     {
         attachmentsService = new AttachmentsService(configuration.GetConnectionString("OctobridgeDatabase"));
         _logger = logger;
@@ -22,7 +22,7 @@ public class AttachmentsController : ControllerBase
             Attachment[] attachments = attachmentsService.GetAttachments(fileName);
 
             // Log 
-            _logger.Information($"Attachments (Get): Filename: {fileName ?? string.Empty} Count: {attachments.Length}");
+            _logger.LogInformation($"Attachments (Get): Filename: {fileName ?? string.Empty} Count: {attachments.Length}");
 
             return Ok(attachments);
         }
@@ -92,7 +92,7 @@ public class AttachmentsController : ControllerBase
 
                     // Log 
                     string attachmentJson = JsonSerializer.Serialize(attachment);
-                    _logger.Information($"Attachments (Add): {attachmentJson}");
+                    _logger.LogInformation($"Attachments (Add): {attachmentJson}");
                 }
             }
 
@@ -113,7 +113,7 @@ public class AttachmentsController : ControllerBase
             attachmentsService.DeleteFile(id);
 
             // Log 
-            _logger.Information($"Attachments (Delete): ID: {id}");
+            _logger.LogInformation($"Attachments (Delete): ID: {id}");
 
             return Ok();
         }
