@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>MVCClient</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.ComponentModel.DataAnnotations" />
+    <Using Include="System.Diagnostics" />
+    <Using Include="System.Text.Json" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.AspNetCore.Mvc.Rendering"/>
+    <Using Include="Microsoft.EntityFrameworkCore" />
+    <Using Include="MVCClient.Models" />
+    <Using Include="MVCClient.Repositories"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
