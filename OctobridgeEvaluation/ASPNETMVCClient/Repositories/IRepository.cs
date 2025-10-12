@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
+﻿namespace MVCClient.Models;
 
-namespace MVCClient.Models
+public interface IRepository
 {
-    public interface IRepository
-    {
-        IEnumerable<Movie> Movies { get; }
-        void AddMovie(Movie m);
-    }
+    IEnumerable<Movie> Movies { get; }
+    void AddMovie(Movie m);
 }
