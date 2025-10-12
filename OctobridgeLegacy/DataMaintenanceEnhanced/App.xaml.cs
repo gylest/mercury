@@ -9,22 +9,14 @@ public partial class App : Application
 
     public App()
     {
-        // 1. Create the Host Builder
+        // Create the Host Builder
         _host = Host.CreateDefaultBuilder()
-            .ConfigureAppConfiguration((context, config) =>
-            {
-                // Host.CreateDefaultBuilder already loads appsettings.json,
-                // but you can customize or add environment-specific files here.
-                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-            })
             .ConfigureServices((context, services) =>
             {
-                // 2. Register strongly-typed configuration objects
-                // The Configure<T> method binds the JSON section to the C# class.
+                // Register AppSettings with DI
                 services.Configure<AppSettings>(context.Configuration.GetSection("AppSettings"));
 
-                // 3. Register your WPF Windows and ViewModels for DI
+                // Register MainForm with DI
                 services.AddTransient<MainWindow>();
                 // services.AddTransient<AnotherWindow>();
                 // services.AddTransient<SomeViewModel>();
@@ -37,7 +29,7 @@ public partial class App : Application
     {
         await _host.StartAsync();
 
-        // 4. Resolve the starting window from the service provider and show it
+        // Resolve the starting window from the service provider and show it
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.Show();
 
