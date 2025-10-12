@@ -28,7 +28,7 @@ namespace OctobridgeCoreRestService.Controllers.V1
         private readonly IUserService      _userService;
         private readonly ILogger           _logger;
 
-        public OrdersController(OctobridgeContext context, IUserService userService, ILogger<CustomersController> logger)
+        public OrdersController(OctobridgeContext context, IUserService userService, ILogger<OrdersController> logger)
         {
             _context     = context;
             _userService = userService;

@@ -18,7 +18,7 @@ namespace OctobridgeCoreRestService.Controllers.V1
         private readonly OctobridgeContext _context;
         private readonly ILogger _logger;
 
-        public ProductsController(OctobridgeContext context, ILogger<CustomersController> logger)
+        public ProductsController(OctobridgeContext context, ILogger<ProductsController> logger)
         {
             _context = context;
             _logger = logger;
