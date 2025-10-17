@@ -1,6 +1,6 @@
 # OctobridgeTest
 
-This solution contains two `NUnit` test projects targeting .NET and a `Class Library` project containing Entity Framework classes to access the `Octobridge` database.
+This solution contains two `NUnit` test projects targeting .NET.
 
 ---
 
@@ -14,6 +14,7 @@ Automates database testing for the Octobridge SQL Server database using Entity F
 **Technologies:**  
 - NUnit Test Framework  
 - Entity Framework Core  
+- Using GitHUb NuGet package `OctobridgeEF` for database models  
 
 **Setup & Usage:**  
 - Project type: `NUnit Test Project (C#)`  
@@ -43,24 +44,6 @@ Automates REST API testing for the OctobridgeCoreRestService using HttpClient.
   - Microsoft.AspNet.WebApi.Client, Microsoft.AspNetCode.StaticFiles  
 - Ensure the REST service `OctobridgeCoreRestService` is running (IIS Express or IIS).  
 - Run tests via `Test Explorer` in Visual Studio.  
-
----
-
-### 3. OctobridgeEF
-
-**Purpose:**  
-Entity Framework code for working with Octobridge database.  
-
-**Technologies:**  
-- `EF Core Power Tools` used to generate models from the database.  
-
-**Setup & Usage:**  
-- Project type: `Class Library (C#)`  
-- NuGet packages:  
-  - Microsoft.EntityFrameworkCore.SqlServer  
-- Ensure the "Octobridge" database exists and know the connection string.  
-- Right click a project in Solution Explorer, select EF Core Power Tools/Reverse Engineer or press Ctrl+Shift+A, select the Data folder, and select the EF Core Database First Wizard.  
-- Connect to your existing database via the Add button, select the desired database objects, and complete the wizard to generate models.  
 
 ---
 
