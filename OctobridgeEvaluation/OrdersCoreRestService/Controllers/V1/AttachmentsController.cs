@@ -54,7 +54,7 @@ namespace OctobridgeCoreRestService.Controllers.V1
             }
             else
             {
-                attachments = await _context.Attachments.FromSqlRaw("SELECT Id, Filename, Filetype, Length, Filedata, RecordCreated FROM Attachment where Filename = {0}", fileName).ToListAsync().ConfigureAwait(true);
+                attachments = await _context.Attachments.Where(a => a.Filename == fileName).ToListAsync().ConfigureAwait(true);
 
                 attachmentInfos = attachments
                     .Select(x => new AttachmentInfo()

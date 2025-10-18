@@ -42,7 +42,7 @@ public class AttachmentTests
     [Test, Description("Get - Attachments by filename - OK (200)")]
     public async Task Get_Attachments_ByFilename()
     {
-        Uri uri = new Uri("api/v1/attachments?filename=ceville.jpg", UriKind.Relative);
+        Uri uri = new Uri("api/v1/attachments?filename=seaworld-san-diego.jpg", UriKind.Relative);
 
         HttpResponseMessage response = await _client.GetAsync(uri).ConfigureAwait(false);
 
@@ -51,7 +51,7 @@ public class AttachmentTests
             // Get customers
             _attachments = await response.Content.ReadAsAsync<List<Attachment>>().ConfigureAwait(false);
 
-            Assert.Pass($"Count of customers returned = {_attachments.Count}");
+            Assert.Pass($"Count of attachments returned = {_attachments.Count}");
         }
         else
         {
