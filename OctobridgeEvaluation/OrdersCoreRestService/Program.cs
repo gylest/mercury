@@ -11,6 +11,7 @@ using OctobridgeCoreRestService.Helpers;
 using OctobridgeCoreRestService.Models;
 using OctobridgeCoreRestService.Services;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using OctobridgeEF.Models;
 
 namespace OctobridgeCoreRestService
 {
