@@ -1,10 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using NUnit.Framework;
-using OctobridgeEF.Models;
-namespace Tests;
+﻿namespace Tests;
 
 public class OrderTests : DatabaseTestFixture
 {
