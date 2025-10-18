@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using OctobridgeEF.Models;
 
 namespace OctobridgeCoreRestService.Controllers.V1
 {

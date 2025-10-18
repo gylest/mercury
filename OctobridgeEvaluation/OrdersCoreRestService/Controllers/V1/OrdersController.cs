@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using Asp.Versioning;
+using OctobridgeEF.Models;
 
 namespace OctobridgeCoreRestService.Controllers.V1
 {    /// <summary>
