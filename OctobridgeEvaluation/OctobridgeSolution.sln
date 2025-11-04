@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCClient", "ASPNETMVCClien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCClientTests", "MVCClientTests\MVCClientTests.csproj", "{549E36FD-BB06-48AD-A060-683D99746618}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OctobridgeDatabase", "OctobridgeDatabase\OctobridgeDatabase.sqlproj", "{A2521637-0319-427A-8355-F50F0D9D7422}"
-EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Angular.Client", "Angular.Client\Angular.Client.esproj", "{2ADBFA4C-C499-B20C-E98C-EAC8A3E39A6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular.Server", "Angular.Server\Angular.Server.csproj", "{5149BC5E-5077-B991-2651-D739B2F6B24A}"
@@ -38,12 +36,6 @@ Global
 		{549E36FD-BB06-48AD-A060-683D99746618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549E36FD-BB06-48AD-A060-683D99746618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549E36FD-BB06-48AD-A060-683D99746618}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2521637-0319-427A-8355-F50F0D9D7422}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{2ADBFA4C-C499-B20C-E98C-EAC8A3E39A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2ADBFA4C-C499-B20C-E98C-EAC8A3E39A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ADBFA4C-C499-B20C-E98C-EAC8A3E39A6A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
