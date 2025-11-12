@@ -50,13 +50,20 @@ public class ProductsController : ControllerBase
             return BadRequest();
         }
 
-        // Update record modified
-        if (product.RecordModified == DateTime.MinValue)
+        // Fetch the existing product from the database
+        var existingProduct = await _context.Products.FindAsync(id);
+        if (existingProduct == null)
         {
-            product.RecordModified = DateTime.UtcNow;
+            return NotFound();
         }
 
-        _context.Entry(product).State = EntityState.Modified;
+        // Update only the properties that should be changed
+        existingProduct.Name = product.Name;
+        existingProduct.ProductNumber = product.ProductNumber;
+        existingProduct.ProductCategoryId = product.ProductCategoryId;
+        existingProduct.Cost = product.Cost;
+        existingProduct.RecordModified = DateTime.UtcNow;
+        // RecordCreated is NEVER modified
 
         try
         {

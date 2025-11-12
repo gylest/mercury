@@ -12,7 +12,7 @@
             <ColumnDefinition Width="73*"/>
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgOrders" HorizontalAlignment="Left" Height="238" Margin="11,23,0,0" VerticalAlignment="Top" Width="658" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <DataGrid x:Name="dgOrders" HorizontalAlignment="Left" Height="238" Margin="11,23,0,0" VerticalAlignment="Top" Width="658" Grid.ColumnSpan="2" Grid.Column="1" SelectionChanged="DgOrders_SelectionChanged"/>
         <Button x:Name="btnGet" Content="Get" HorizontalAlignment="Left" Height="33" Margin="545,23,0,0" VerticalAlignment="Top" Width="69" Click="BtnGet_Click" Grid.Column="2"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="33" Margin="545,78,0,0" VerticalAlignment="Top" Width="69" Click="BtnAdd_Click" Grid.Column="2"/>
         <Label x:Name="lblID" Content="ID:" HorizontalAlignment="Left" Height="26" Margin="11,290,0,0" VerticalAlignment="Top" Width="27" Grid.Column="1"/>

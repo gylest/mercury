@@ -1,11 +1,11 @@
 # DataMaintenanceEnhanced
 
-A Visual C# .NET 9 Windows application for managing data via a RESTful service.
+A Visual C# .NET Windows application for managing data via a RESTful service.
 
 ## Technology Highlights
 
 - **Windows Presentation Foundation (WPF)**
-- .NET 9
+- Updating data through RESTful API calls
 
 ## Features
 
@@ -17,9 +17,9 @@ A Visual C# .NET 9 Windows application for managing data via a RESTful service.
 
 ### Prerequisites
 
-- Visual Studio 2022 or later
-- .NET 9 SDK
-- The REST service `OctobridgeCoreRestService` running in IIS Express or IIS
+- Visual Studio 2026  
+- .NET 10 SDK  
+- The REST service `OctobridgeCoreRestService` running in IIS Express or IIS  
 
 ### Configuration
 
@@ -42,8 +42,3 @@ Edit `appsettings.json` to set the correct API endpoints:
 
 - Ensure the REST service is running before launching the application.
 - Use the application's UI to verify data operations (CRUD) are functioning as expected.
-
-## Repository
-
-This project is maintained in a Git repository: `https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/Mercury`
-

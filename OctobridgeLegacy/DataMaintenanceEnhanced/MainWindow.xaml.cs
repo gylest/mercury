@@ -58,7 +58,6 @@ public partial class MainWindow : Window
         dgOrders.ItemsSource = products;
     }
 
-
     private async Task RunGetAsync()
     {
         HttpResponseMessage response = await client.GetAsync(productsURI).ConfigureAwait(true);
@@ -126,6 +125,18 @@ public partial class MainWindow : Window
     {
         HttpResponseMessage response = await client.PutAsJsonAsync($"{productsURI}/{product.ProductId}", product).ConfigureAwait(true);
         response.EnsureSuccessStatusCode();
+    }
+
+    private void DgOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (dgOrders.SelectedItem is Product selectedProduct)
+        {
+            txtID.Text = selectedProduct.ProductId.ToString(CultureInfo.CurrentCulture);
+            txtName.Text = selectedProduct.Name;
+            txtProductNumber.Text = selectedProduct.ProductNumber;
+            txtCategoryId.Text = selectedProduct.ProductCategoryId.ToString(CultureInfo.CurrentCulture);
+            txtCost.Text = selectedProduct.Cost.ToString(CultureInfo.CurrentCulture);
+        }
     }
 }
 
