@@ -96,7 +96,7 @@ public partial class OctobridgeContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.ToTable("Order", tb => tb.HasTrigger("tblTriggerAuditRecord"));
+            entity.ToTable("Order", tb => tb.HasTrigger("trg_Order_InsertAuditRecord"));
 
             entity.Property(e => e.FreightAmount).HasColumnType("money");
             entity.Property(e => e.OrderStatus)
@@ -208,7 +208,7 @@ public partial class OctobridgeContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.ToTable("Product");
+            entity.ToTable("Product", tb => tb.HasTrigger("trg_Product_PreventRecordCreatedUpdate"));
 
             entity.HasIndex(e => e.ProductNumber, "UN_Product_ProductNumber").IsUnique();
 
