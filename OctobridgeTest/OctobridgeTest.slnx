@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="readme.md" />
+  </Folder>
+  <Project Path="TestDatabaseNUnit/TestDatabaseNUnit.csproj" />
+  <Project Path="TestRestServicesNUnit/TestRestServicesNUnit.csproj" />
+</Solution>
