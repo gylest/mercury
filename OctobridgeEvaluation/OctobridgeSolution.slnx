@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="Angular.Client/Angular.Client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Angular.Server/Angular.Server.csproj" />
+  <Project Path="ASPNETMVCClient/MVCClient.csproj" />
+  <Project Path="MVCClientTests/MVCClientTests.csproj" />
+  <Project Path="OrdersCoreRestService/OctobridgeCoreRestService.csproj" />
+</Solution>

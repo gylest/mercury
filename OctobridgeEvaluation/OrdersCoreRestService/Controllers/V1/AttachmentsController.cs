@@ -19,7 +19,7 @@ public class AttachmentsController : ControllerBase
     // GET: https://localhost:44366/api/v1/attachments?filename=helfer.jpg
     //
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<AttachmentInfo>>> GetAttachmentInfo([FromQuery] string fileName)
+    public async Task<ActionResult<IEnumerable<AttachmentInfo>>> GetAttachmentInfo([FromQuery] string? fileName)
     {
         List<AttachmentInfo> attachmentInfos;
         List<Attachment> attachments;
