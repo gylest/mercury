@@ -45,9 +45,15 @@ public class ProductsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutProduct(int id, Product product)
     {
-        if (( product == null) || (id != product.ProductId))
+        if ((product == null) || (id != product.ProductId))
         {
             return BadRequest();
+        }
+
+        // Update record modified
+        if (product.RecordModified == DateTime.MinValue)
+        {
+            product.RecordModified = DateTime.UtcNow;
         }
 
         _context.Entry(product).State = EntityState.Modified;
