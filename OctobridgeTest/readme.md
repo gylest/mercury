@@ -60,4 +60,4 @@ Automates REST API testing for the OctobridgeCoreRestService using HttpClient.
 ## Notes
 
 - Both test projects are designed for automated testing and require minimal manual setup beyond service/database availability.  
-- Target framework: `.NET 9`  
+- Target framework: `.NET 10`  
