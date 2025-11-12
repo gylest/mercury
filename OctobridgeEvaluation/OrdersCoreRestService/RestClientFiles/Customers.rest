@@ -35,10 +35,9 @@ Accept: application/json
   "firstName": "John",
   "lastName": "Doe",
   "email": "john.doe@example.com",
-  "phone": "123-456-7890",
+  "telephone": "123-456-7890",
   "addressLine1": "123 Main Street",
   "postalcode":"60606",
-  "telephone":"",
   "city": "Anytown"
 }
 
@@ -49,7 +48,23 @@ Accept: application/json
 
 {
   "id": 1,
-  "city": "Manchester",
-  "telephone": "0987654321",
-  "email": "john.smith@newdomain.com"
+  "firstName": "Tony",
+  "lastName": "Gyles",
+  "middleName": "Peter",
+  "addressLine1": "123 Paddington Plaza",
+  "addressLine2": "Lower Early",
+  "city": "Reading",
+  "postalcode":"RG1 9LP",
+  "telephone": "07799755528",
+  "email": "tonygyles@gmail.com"
+}
+
+### Patch an existing customer
+PATCH https://localhost:44366/api/v1/customers/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "tonygyles@gmail.com",
+  "telephone": "01256468990"
 }

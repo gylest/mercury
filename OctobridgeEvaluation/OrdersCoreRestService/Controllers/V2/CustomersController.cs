@@ -50,7 +50,7 @@ public class CustomersController : ControllerBase
     // GET: https://localhost:44366/api/v2/customers?lastName=gyles&firstName=ton
     //
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer([FromQuery] string lastName, [FromQuery] string firstName)
+    public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer([FromQuery] string? lastName, [FromQuery] string? firstName)
     {
         List<Customer> customers;
 

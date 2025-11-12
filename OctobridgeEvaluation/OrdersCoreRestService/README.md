@@ -1,6 +1,6 @@
 # OctobridgeCoreRestService
 
-A REST API project for managing Octobridge database entities, built with ASP.NET Core (.NET 9).
+A REST API project for managing Octobridge database entities, built with ASP.NET Core.  
 
 ---
 
@@ -24,7 +24,7 @@ Customers         | GET, POST, PUT, DELETE   | api/v1/customers?lastName=Gyles&f
 Orders            | GET, POST, PUT, DELETE   | api/v1/orders/5
 Products          | GET, POST, PUT, DELETE   | api/v1/products/4
 
-Customers supports ```api/v2``` and the GET operations return upper case data.  
+Customers supports `api/v2` and the GET operations return upper case data.  
 
 ---
 
@@ -70,9 +70,9 @@ Customers supports ```api/v2``` and the GET operations return upper case data.
 
 ### Prerequisites
 
-- .NET 9 SDK  
+- .NET 10 SDK  
 - SQL Server 2022 or later  
-- Visual Studio 2022 or later  
+- Visual Studio 2026 or later  
 
 ---
 

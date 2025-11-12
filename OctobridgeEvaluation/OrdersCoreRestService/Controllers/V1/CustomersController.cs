@@ -40,7 +40,7 @@ public class CustomersController : ControllerBase
     // GET: https://localhost:44366/api/v1/customers?lastName=gyles&firstName=ton
     //
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer([FromQuery] string lastName, [FromQuery] string firstName)
+    public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer([FromQuery] string? lastName, [FromQuery] string? firstName)
     {
         List<Customer> customers;
 
@@ -146,6 +146,82 @@ public class CustomersController : ControllerBase
         await _context.SaveChangesAsync().ConfigureAwait(true);
 
         return customer;
+    }
+
+    //
+    // PATCH: https://localhost:44366/api/v1/customers/2
+    //
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchCustomer(int id, [FromBody] JsonElement patchData)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        // Apply only the provided properties
+        foreach (var property in patchData.EnumerateObject())
+        {
+            var propertyName = property.Name;
+            var propertyValue = property.Value;
+
+            // Use reflection to find and update the matching property
+            var customerProperty = typeof(Customer).GetProperty(propertyName, 
+                System.Reflection.BindingFlags.IgnoreCase | 
+                System.Reflection.BindingFlags.Public | 
+                System.Reflection.BindingFlags.Instance);
+
+            if (customerProperty != null && customerProperty.CanWrite)
+            {
+                // Skip Id to prevent modification
+                if (customerProperty.Name.Equals("Id", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                object value = null;
+                
+                // Convert JsonElement to appropriate type
+                if (propertyValue.ValueKind == JsonValueKind.String)
+                {
+                    value = propertyValue.GetString();
+                }
+                else if (propertyValue.ValueKind == JsonValueKind.Number && customerProperty.PropertyType == typeof(int))
+                {
+                    value = propertyValue.GetInt32();
+                }
+                else if (propertyValue.ValueKind == JsonValueKind.Number && customerProperty.PropertyType == typeof(int?))
+                {
+                    value = propertyValue.GetInt32();
+                }
+                else if (propertyValue.ValueKind == JsonValueKind.Null)
+                {
+                    value = null;
+                }
+
+                customerProperty.SetValue(customer, value);
+            }
+        }
+
+        _context.Entry(customer).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+            
+            // Log 
+            string customerJson = JsonSerializer.Serialize(customer);
+            _logger.LogInformation($"Customer (Patch) [id] = [{id}]: {customerJson}");
+            
+            return NoContent();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!CustomerExists(id))
+            {
+                return NotFound();
+            }
+            throw;
+        }
     }
 
     private bool CustomerExists(int id)

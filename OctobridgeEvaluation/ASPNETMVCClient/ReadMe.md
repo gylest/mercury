@@ -1,8 +1,8 @@
 # MVCClient
 
 ## Overview
-MVCClient is an ASP.NET Core MVC (Model-View-Controller) Web Application targeting .NET 9.  
-It provides a web interface for managing entities such as Orders, Customers, Products, and more, backed by a SQL Server database using Entity Framework Core.
+MVCClient is an ASP.NET Core MVC (Model-View-Controller) Web Application targeting .NET.  
+It provides a web interface for managing entities such as Orders, Customers, Products, and more, backed by a SQL Server database using Entity Framework Core.  
 
 ---
 
@@ -17,11 +17,11 @@ It provides a web interface for managing entities such as Orders, Customers, Pro
 - **Views/**  
   Razor views for displaying and editing data.
 - Configuration File  
-  The ```appsettings.json``` file stores connection strings and application settings.
+  The `appsettings.json` file stores connection strings and application settings.
 - **Program.cs / Startup.cs**  
   Application startup and service registration.
 - Developer Notes  
-  File ```ASPNETMVCDeveloperNotes.txt``` has notes for ASP.NET MVC development.
+  File `ASPNETMVCDeveloperNotes.txt` has notes for ASP.NET MVC development.
 
 ## Web Pages
 
@@ -54,6 +54,6 @@ But they could be added as an enhancement in future.
 ## Setup & Build Instructions
 
 1. Restore NuGet packages
-2. Select ```Build MVCClient``` from Build menu
+2. Select `Build MVCClient` from Build menu
 
 ---
