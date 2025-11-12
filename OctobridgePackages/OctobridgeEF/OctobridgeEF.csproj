@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Octobridge Database EF</Title>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>Tony Gyles</Authors>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Company>Octobridge</Company>
     <Description>Classes for reading and writing from Octobridge database</Description>
-    <FileVersion>1.0.0.0</FileVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
