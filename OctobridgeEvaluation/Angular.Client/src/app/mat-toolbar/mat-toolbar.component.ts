@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   templateUrl: './mat-toolbar.component.html',
   styleUrls: ['./mat-toolbar.component.css'],
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, RouterLink],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MatToolbarComponent {
