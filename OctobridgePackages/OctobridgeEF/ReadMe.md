@@ -34,3 +34,18 @@ Push the package to GitHub Packages:
 ```cmd
 dotnet nuget push bin/Release/OctobridgeEF.1.2.0.nupkg --source github
 ```
+
+## Update GitHub Token when Expired
+
+### Regenerate GitHub Personal Access Token (PAT)
+
+Login on GitHub and goto Settings, Developer Settings and then `Personal Access Tokens`.  
+Regenerate existing Personal Access Token (PAT).  
+Alternatively create a new token with `read:packages` and `write:packages` scopes.  
+
+### Update NuGet Source with New Token
+
+Update the NuGet source with the new token:  
+```cmd
+dotnet nuget update source github --username gylest --password YOUR_NEW_GITHUB_PAT --store-password-in-clear-text
+```
