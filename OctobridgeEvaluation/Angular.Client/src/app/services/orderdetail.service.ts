@@ -1,17 +1,14 @@
-import { Injectable }      from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient }      from '@angular/common/http';
 import { HttpHeaders }     from '@angular/common/http';
 import { Observable }      from 'rxjs';
 import { OrderDetail }     from '../models/orderdetail';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderDetailService {
-  //
-  // Note: Base URL is added in HTTP Interceptor
-  //
-  constructor(private http: HttpClient) { }
+  private readonly http = inject(HttpClient);
 
   //
   // Get order details by id

@@ -14,9 +14,19 @@ export class Order {
   recordCreated: Date | null;
   recordModified: Date | null;
 
-  constructor(theId: number = (-1), theOrderStatus: string = '', theCustomerId: number = (-1), theFreightAmount: number = (-1),
-    theSubTotal: number = (-1), theTotalDue: number = (-1), thePaymentDate: Date | null = null, theShippedDate: Date | null = null,
-    theCancelDate: Date | null = null, theRecordCreated: Date | null = null, theRecordModified: Date | null = null) {
+  constructor(
+    theId = -1,
+    theOrderStatus = '',
+    theCustomerId = -1,
+    theFreightAmount = -1,
+    theSubTotal = -1,
+    theTotalDue = -1,
+    thePaymentDate: Date | null = null,
+    theShippedDate: Date | null = null,
+    theCancelDate: Date | null = null,
+    theRecordCreated: Date | null = null,
+    theRecordModified: Date | null = null
+  ) {
     this.id = theId;
     this.orderStatus = theOrderStatus;
     this.customerId = theCustomerId;
@@ -29,5 +39,4 @@ export class Order {
     this.recordCreated = theRecordCreated;
     this.recordModified = theRecordModified;
   }
-
 }

@@ -1,4 +1,4 @@
-import { Injectable }         from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable }         from 'rxjs';
 import { Order }              from '../models/order';
 import { OrderDetail }        from '../models/orderdetail';
@@ -20,17 +20,22 @@ export class DataModelOrders {
   // Data Members
   //
   order: Order = new Order();
-  heading: string = '';
+  heading = '';
   state: OrderStateEnum = OrderStateEnum.Undefined;
   orderStatusValues: CodedValue[] = [];
 
   //
+  // Services (using inject)
+  //
+  private orderService = inject(OrderService);
+  private orderDetailService = inject(OrderDetailService);
+  private codedValueService = inject(CodedValueService);
+
+  //
   // Constructor
   //
-  constructor(private orderService: OrderService,
-              private orderDetailService: OrderDetailService,
-              private codedValueService: CodedValueService) {
-    codedValueService.get('OrderStatus').subscribe(
+  constructor() {
+    this.codedValueService.get('OrderStatus').subscribe(
       data => {
         this.orderStatusValues = data;
       });

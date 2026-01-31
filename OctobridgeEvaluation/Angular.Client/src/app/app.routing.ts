@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes }       from '@angular/router';
+import { Routes }                     from '@angular/router';
 import { HomeComponent }              from './home/home.component';
 import { ManageCustomersComponent }   from './manage-customers/manage-customers.component';
 import { ManageOrdersComponent }      from './manage-orders/manage-orders.component';

@@ -1,8 +1,8 @@
-import { Injectable }                           from '@angular/core';
-import { HttpClient, HttpParams, HttpEventType} from '@angular/common/http';
-import { HttpHeaders }                          from '@angular/common/http';
-import { Observable }                           from 'rxjs';
-import { CodedValue }                           from '../models/codedvalue';
+import { Injectable, inject }     from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders }            from '@angular/common/http';
+import { Observable }             from 'rxjs';
+import { CodedValue }             from '../models/codedvalue';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class CodedValueService {
     //
     // Note: Base URL is added in HTTP Interceptor
     //
-    constructor(private http: HttpClient) { }
+    private http = inject(HttpClient);
 
     //
     // Get CodedValues by Group Name

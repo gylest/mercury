@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -28,7 +28,8 @@ export class ManageOrdersComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'orderStatus', 'customerId', 'freightAmount', 'subTotal', 'totalDue', 'paymentDate', 'shippedDate', 'cancelDate', 'recordCreated', 'recordModified', 'action'];
   dataSource = new MatTableDataSource<Order>();
 
-  constructor(private model: DataModelOrders, private router: Router) { }
+  private model = inject(DataModelOrders);
+  private router = inject(Router);
 
   ngOnInit() {
     this.model.getOrders().subscribe(
@@ -50,8 +51,8 @@ export class ManageOrdersComponent implements OnInit, AfterViewInit {
   }
 
   /**
-* Helper function to format column keys into readable headers.
-*/
+  * Helper function to format column keys into readable headers.
+  */
   formatHeader(columnKey: string): string {
     if (columnKey === 'action') {
       return 'Action';

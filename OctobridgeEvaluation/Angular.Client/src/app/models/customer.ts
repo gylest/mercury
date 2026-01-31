@@ -15,9 +15,20 @@ export class Customer {
   recordCreated: Date | null;
   recordModified: Date | null;
 
-  constructor(theId: number = 0, theFirstName: string = '', theLastName: string = '', theMiddleName: string = '', theAddressLine1: string = '', theAddressLine2: string = '', theCity: string = '',
-    thePostCode: string = '', theTelephone: string = '', theEmail: string = '',
-    theRecordCreated: Date | null = null, theRecordModified: Date | null = null) {
+  constructor(
+    theId = 0,
+    theFirstName = '',
+    theLastName = '',
+    theMiddleName = '',
+    theAddressLine1 = '',
+    theAddressLine2 = '',
+    theCity = '',
+    thePostCode = '',
+    theTelephone = '',
+    theEmail = '',
+    theRecordCreated: Date | null = null,
+    theRecordModified: Date | null = null
+  ) {
     this.id = theId;
     this.firstName = theFirstName;
     this.lastName = theLastName;

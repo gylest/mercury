@@ -12,11 +12,12 @@ import { saveAs } from 'file-saver';
 import { Attachment } from '../models/attachment';
 import { AttachmentService } from '../services/attachment.service';
 import { DialogConfirmComponent, DialogConfirmModel } from '../dialog-confirm/dialog-confirm.component';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-manage-attachments',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatSort, CommonModule, ReactiveFormsModule, MatCardModule],
+  imports: [MatTableModule, MatPaginator, CommonModule, ReactiveFormsModule, MatCardModule],
   styleUrls: ['./manage-attachments.component.css'],
   templateUrl: './manage-attachments.component.html',
 })
@@ -32,7 +33,9 @@ export class ManageAttachmentsComponent implements OnInit, AfterViewInit {
   uploadResponse = { status: '', message: '', filePath: '' };
   dataSource = new MatTableDataSource<Attachment>();
 
-  constructor(private fb: NonNullableFormBuilder, private attachmentService: AttachmentService, private dialog: MatDialog) { }
+  private fb = inject(NonNullableFormBuilder);
+  private attachmentService = inject(AttachmentService);
+  private dialog = inject(MatDialog);
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -104,7 +107,7 @@ export class ManageAttachmentsComponent implements OnInit, AfterViewInit {
       if (dialogValue) {
         this.attachmentService.delete(element.id)
           .subscribe(
-            (data) => {
+            () => {
               // log
               console.log(`File deleted ${JSON.stringify(element.fileName)}`);
               // Find index of deleted attachment, remove from data and refresh

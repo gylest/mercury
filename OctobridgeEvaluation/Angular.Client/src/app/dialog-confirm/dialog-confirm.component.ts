@@ -1,5 +1,5 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, Inject }             from '@angular/core';
+import { Component, inject }             from '@angular/core';
 
 /**
  * Class to represent confirm dialog model.
@@ -20,11 +20,13 @@ export class DialogConfirmComponent {
   title: string;
   message: string;
 
-  constructor(public dialogRef: MatDialogRef<DialogConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogConfirmModel) {
+  private dialogRef = inject(MatDialogRef<DialogConfirmComponent>);
+  private data = inject(MAT_DIALOG_DATA) as DialogConfirmModel;
+
+  constructor() {
     // Update view with given values
-    this.title = data.title;
-    this.message = data.message;
+    this.title = this.data.title;
+    this.message = this.data.message;
   }
 
   onConfirm(): void {

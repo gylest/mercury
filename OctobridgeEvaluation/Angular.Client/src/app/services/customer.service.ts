@@ -1,4 +1,4 @@
-import { Injectable }              from '@angular/core';
+import { Injectable, inject }      from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable }              from 'rxjs';
 import { Customer }                from '../models/customer';
@@ -10,7 +10,7 @@ export class CustomerService {
   //
   // Note: Base URL is added in HTTP Interceptor
   //
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   //
   // Add a customer
