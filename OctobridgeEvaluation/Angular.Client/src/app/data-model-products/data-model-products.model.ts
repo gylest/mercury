@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { CodedValue } from '../models/codedvalue';
@@ -18,15 +18,19 @@ export class DataModelProducts {
   // Data Members
   //
   product: Product = new Product();
-  heading: string = '';
+  heading = '';
   state: ProductStateEnum = ProductStateEnum.Undefined;
   ProductStatusValues: CodedValue[] = [];
+
+  // Use inject() instead of constructor parameter injection
+  private productService = inject(ProductService);
+  private codedValueService = inject(CodedValueService);
 
   //
   // Constructor
   //
-  constructor(private productService: ProductService, private codedValueService: CodedValueService) {
-    codedValueService.get('ProductStatus').subscribe(
+  constructor() {
+    this.codedValueService.get('ProductStatus').subscribe(
       data => {
         this.ProductStatusValues = data;
       });

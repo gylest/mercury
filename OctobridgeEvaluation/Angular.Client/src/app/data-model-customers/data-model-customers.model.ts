@@ -1,7 +1,7 @@
-import { Injectable }      from '@angular/core';
-import { Observable }      from 'rxjs';
-import { Customer }        from '../models/customer';
-import { CustomerService } from '../services/customer.service';
+import { Injectable, inject } from '@angular/core';
+import { Observable }         from 'rxjs';
+import { Customer }           from '../models/customer';
+import { CustomerService }    from '../services/customer.service';
 
 //
 // Types
@@ -16,13 +16,11 @@ export class DataModelCustomers {
   // Data Members
   //
   customer: Customer = new Customer();
-  heading: string = '';
+  heading = '';
   state: CustomerStateEnum = CustomerStateEnum.Undefined;
 
-  //
-  // Constructor
-  //
-  constructor(private customerService: CustomerService) {}
+  // Use inject() instead of constructor parameter injection
+  private customerService = inject(CustomerService);
 
   //
   // Methods

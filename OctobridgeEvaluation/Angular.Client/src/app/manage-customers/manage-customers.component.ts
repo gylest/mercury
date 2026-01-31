@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DataModelCustomers, CustomerStateEnum } from '../data-model-customers/data-model-customers.model';
 import { Customer } from '../models/customer';
@@ -14,8 +14,8 @@ import { Customer } from '../models/customer';
   imports: [
     CommonModule,
     MatTableModule,
-    MatPaginator,
-    MatSort,
+    MatPaginatorModule,
+    MatSortModule,
     MatCardModule,
   ],
   styleUrls: ['./manage-customers.component.css'],
@@ -30,7 +30,8 @@ export class ManageCustomersComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Customer>();
 
-  constructor(private model: DataModelCustomers, private router: Router) { }
+  private model = inject(DataModelCustomers);
+  private router = inject(Router);
 
   ngOnInit() {
     this.model.getCustomers().subscribe(

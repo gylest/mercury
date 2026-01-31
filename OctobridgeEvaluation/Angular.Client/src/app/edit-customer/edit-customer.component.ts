@@ -1,10 +1,10 @@
-import { Component, OnInit }                             from '@angular/core';
+import { Component, OnInit, inject }                     from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule }                           from '@angular/forms';
 import { Router }                                        from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatDialog }                                     from '@angular/material/dialog';
+import { MatFormFieldModule }                            from '@angular/material/form-field';
+import { MatInputModule }                                from '@angular/material/input';
 import { DatePipe }                                      from '@angular/common';
 import { DataModelCustomers, CustomerStateEnum }         from '../data-model-customers/data-model-customers.model';
 import { DialogConfirmComponent, DialogConfirmModel }    from '../dialog-confirm/dialog-confirm.component';
@@ -29,7 +29,11 @@ export class EditCustomerComponent implements OnInit {
   readonlyFields = false;
   customer!: Customer;
 
-  constructor(private fb: NonNullableFormBuilder, private model: DataModelCustomers, private router: Router, private dialog: MatDialog) { }
+  // Remove constructor and use inject() for dependencies
+  private fb = inject(NonNullableFormBuilder);
+  private model = inject(DataModelCustomers);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   ngOnInit() {
     // Locals
@@ -110,9 +114,7 @@ export class EditCustomerComponent implements OnInit {
             const dialogValue: boolean = dialogResult;
             if (dialogValue) {
               this.model.deleteCustomer(this.editForm.get('customer')?.value ?? {}).subscribe(
-                data => {
-                  this.router.navigate(['manage-customers']);
-                }
+                () => { this.router.navigate(['manage-customers']);}
               );
             }
           });

@@ -1,8 +1,8 @@
-import { Injectable }      from '@angular/core';
-import { HttpClient }      from '@angular/common/http';
-import { HttpHeaders }     from '@angular/common/http';
-import { Observable }      from 'rxjs';
-import { Product }         from '../models/product';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient }         from '@angular/common/http';
+import { HttpHeaders }        from '@angular/common/http';
+import { Observable }         from 'rxjs';
+import { Product }            from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +11,12 @@ export class ProductService {
   //
   // Note: Base URL is added in HTTP Interceptor
   //
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   //
   // Add a product
   //
   add(product: Product): Observable<Product>{
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     const content = JSON.stringify(product);
 
@@ -29,7 +28,6 @@ export class ProductService {
   // Update a product
   //
   update(product: Product): Observable<Product>{
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     const content = JSON.stringify(product);
 
@@ -41,7 +39,6 @@ export class ProductService {
   // Delete a product
   //
   delete(id: number): Observable<ArrayBuffer>{
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
 
     // Delete product
@@ -52,7 +49,6 @@ export class ProductService {
   // Get products
   //
   get(): Observable<Product[]>{
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
 
     // Get products
@@ -63,7 +59,6 @@ export class ProductService {
   // Get product by id
   //
   getById(id: number): Observable<Product> {
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     return this.http.get<Product>('api/Products/' + id, { headers});
   }

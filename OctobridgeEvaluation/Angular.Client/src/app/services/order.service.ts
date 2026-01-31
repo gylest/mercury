@@ -1,8 +1,8 @@
-import { Injectable }      from '@angular/core';
-import { HttpClient }      from '@angular/common/http';
-import { HttpHeaders }     from '@angular/common/http';
-import { Observable }      from 'rxjs';
-import { Order }           from '../models/order';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient }         from '@angular/common/http';
+import { HttpHeaders }        from '@angular/common/http';
+import { Observable }         from 'rxjs';
+import { Order }              from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,12 @@ export class OrderService {
   //
   // Note: Base URL is added in HTTP Interceptor
   //
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   //
   // Add an order
   //
-  add(order: Order): Observable<Order>{
+  add(order: Order): Observable<Order> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     const content = JSON.stringify(order);
@@ -28,7 +28,7 @@ export class OrderService {
   //
   // Update an order
   //
-  update(order: Order): Observable<Order>{
+  update(order: Order): Observable<Order> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     const content = JSON.stringify(order);
@@ -40,7 +40,7 @@ export class OrderService {
   //
   // Delete an order
   //
-  delete(id: number): Observable<ArrayBuffer>{
+  delete(id: number): Observable<ArrayBuffer> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
 
@@ -51,7 +51,7 @@ export class OrderService {
   //
   // Get orders
   //
-  get(): Observable<Order[]>{
+  get(): Observable<Order[]> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,7 +27,11 @@ export class EditProductComponent implements OnInit {
   hideFields = false;
   readonlyFields = false;
 
-  constructor(private fb: NonNullableFormBuilder, private model: DataModelProducts, private router: Router, private dialog: MatDialog) { }
+  // Remove constructor and use inject() for dependencies
+  private fb = inject(NonNullableFormBuilder);
+  private model = inject(DataModelProducts);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   ngOnInit() {
     // Locals
@@ -104,9 +108,7 @@ export class EditProductComponent implements OnInit {
             const dialogValue: boolean = dialogResult;
             if (dialogValue) {
               this.model.deleteProduct(this.editForm.get('product')?.value ?? {}).subscribe(
-                data => {
-                  this.router.navigate(['manage-products']);
-                }
+                () => { this.router.navigate(['manage-products']);}
               );
             }
           });

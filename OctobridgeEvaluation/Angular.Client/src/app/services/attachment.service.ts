@@ -1,4 +1,4 @@
-import { Injectable, Inject }                                from '@angular/core';
+import { Injectable, inject }                                from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpEventType} from '@angular/common/http';
 import { Observable }                                        from 'rxjs';
 import { map }                                               from 'rxjs/operators';
@@ -12,7 +12,7 @@ export class AttachmentService {
   // Note: Base URL is added in HTTP Interceptor
   //
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   //
   // Upload an Attachment

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,21 +23,24 @@ import { OrderDetail } from '../models/orderdetail';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule
-    ],
+  ],
   styleUrls: ['./edit-order.component.css'],
   templateUrl: './edit-order.component.html'
 })
 export class EditOrderComponent implements OnInit {
 
   editForm!: FormGroup;
-  submitted: boolean = false;
-  hideFields: boolean = false;
-  readonlyFields: boolean = false;
+  submitted = false;
+  hideFields = false;
+  readonlyFields = false;
 
   displayedColumns: string[] = ['productId', 'unitPrice', 'quantity'];
   dataSource = new MatTableDataSource<OrderDetail>();
 
-  constructor(private fb: NonNullableFormBuilder, private model: DataModelOrders, private router: Router, private dialog: MatDialog) { }
+  private fb = inject(NonNullableFormBuilder);
+  private model = inject(DataModelOrders);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   ngOnInit() {
     // Locals
@@ -124,9 +127,7 @@ export class EditOrderComponent implements OnInit {
             const dialogValue: boolean = dialogResult;
             if (dialogValue) {
               this.model.deleteOrder(this.editForm.get('order')?.value ?? {}).subscribe(
-                data => {
-                  this.router.navigate(['manage-orders']);
-                }
+                () => {this.router.navigate(['manage-orders']);}
               );
             }
           });

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -29,7 +29,8 @@ export class ManageProductsComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Product>();
 
-  constructor(private model: DataModelProducts, private router: Router) { }
+  private model = inject(DataModelProducts);
+  private router = inject(Router);
 
   ngOnInit() {
     this.model.getProducts().subscribe(

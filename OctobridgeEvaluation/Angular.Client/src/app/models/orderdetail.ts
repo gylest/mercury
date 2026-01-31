@@ -10,8 +10,15 @@ export class OrderDetail {
   recordCreated: Date | null;
   recordModified: Date | null;
 
-  constructor(theLineId: number = (-1), theOrderId: number = (-1), theProductId: number = (-1), theUnitPrice: number = (-1),
-    theQuantity: number = (-1), theRecordCreated: Date | null = null, theRecordModified: Date | null = null) {
+  constructor(
+    theLineId = -1,
+    theOrderId = -1,
+    theProductId = -1,
+    theUnitPrice = -1,
+    theQuantity = -1,
+    theRecordCreated: Date | null = null,
+    theRecordModified: Date | null = null
+  ) {
     this.lineId = theLineId;
     this.orderId = theOrderId;
     this.productId = theProductId;
@@ -20,5 +27,4 @@ export class OrderDetail {
     this.recordCreated = theRecordCreated;
     this.recordModified = theRecordModified;
   }
-
 }
