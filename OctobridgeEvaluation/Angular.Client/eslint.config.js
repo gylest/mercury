@@ -32,6 +32,8 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      // Turn off the requirement for ChangeDetectionStrategy.OnPush
+      "@angular-eslint/prefer-on-push-component-change-detection": "off",
     },
   },
   {
