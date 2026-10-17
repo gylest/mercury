@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { MatToolbarComponent } from './mat-toolbar/mat-toolbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatToolbarComponent, RouterOutlet,RouterModule, FooterComponent]
 })
 export class AppComponent {

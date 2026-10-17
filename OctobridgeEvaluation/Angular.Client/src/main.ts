@@ -1,7 +1,7 @@
 // main.ts
 import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
@@ -12,7 +12,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),provideRouter(routes),
     importProvidersFrom(HttpClientModule),
-    provideHttpClient(
+    provideHttpClient(withXhr(), 
       withInterceptors([apiPrefixInterceptor])
     )
   ]

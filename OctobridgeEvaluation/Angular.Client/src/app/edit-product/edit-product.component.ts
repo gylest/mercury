@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule 
   ],
   styleUrls: ['./edit-product.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './edit-product.component.html'
 })
 export class EditProductComponent implements OnInit {

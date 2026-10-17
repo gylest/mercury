@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +19,7 @@ import { Product } from '../models/product';
     MatCardModule
   ],
   styleUrls: ['./manage-products.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './manage-products.component.html'
 })
 export class ManageProductsComponent implements OnInit, AfterViewInit {
