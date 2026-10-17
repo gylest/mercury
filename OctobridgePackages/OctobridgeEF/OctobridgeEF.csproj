@@ -12,7 +12,7 @@
     <!-- Identity -->
     <PackageId>OctobridgeEF</PackageId>
     <Title>Octobridge Database EF</Title>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
 
     <!-- People/Org -->
     <Authors>Tony Gyles</Authors>
@@ -52,7 +52,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.13" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
   </ItemGroup>
 
 </Project>
