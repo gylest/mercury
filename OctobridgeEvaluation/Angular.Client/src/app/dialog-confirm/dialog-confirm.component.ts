@@ -1,5 +1,5 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, inject }             from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy }             from '@angular/core';
 
 /**
  * Class to represent confirm dialog model.
@@ -14,6 +14,7 @@ export class DialogConfirmModel {
 
 @Component({
   selector: 'app-confirm-dialog',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './dialog-confirm.component.html'
 })
 export class DialogConfirmComponent {

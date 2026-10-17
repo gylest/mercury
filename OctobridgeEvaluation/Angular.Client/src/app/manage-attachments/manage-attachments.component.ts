@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,7 @@ import { inject } from '@angular/core';
   standalone: true,
   imports: [MatTableModule, MatPaginator, CommonModule, ReactiveFormsModule, MatCardModule],
   styleUrls: ['./manage-attachments.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './manage-attachments.component.html',
 })
 export class ManageAttachmentsComponent implements OnInit, AfterViewInit {

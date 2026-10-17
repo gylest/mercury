@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,6 +25,7 @@ import { OrderDetail } from '../models/orderdetail';
     MatNativeDateModule
   ],
   styleUrls: ['./edit-order.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './edit-order.component.html'
 })
 export class EditOrderComponent implements OnInit {

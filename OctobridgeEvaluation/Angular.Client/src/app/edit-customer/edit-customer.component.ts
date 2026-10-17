@@ -1,4 +1,4 @@
-import { Component, OnInit, inject }                     from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy }                     from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule }                           from '@angular/forms';
 import { Router }                                        from '@angular/router';
@@ -19,6 +19,7 @@ import { Customer }                                      from '../models/custome
     MatInputModule
   ],
   styleUrls: ['./edit-customer.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './edit-customer.component.html'
 })
 export class EditCustomerComponent implements OnInit {

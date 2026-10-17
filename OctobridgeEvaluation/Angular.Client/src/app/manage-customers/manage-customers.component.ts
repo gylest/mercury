@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +19,7 @@ import { Customer } from '../models/customer';
     MatCardModule,
   ],
   styleUrls: ['./manage-customers.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './manage-customers.component.html'
 })
 

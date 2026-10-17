@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +19,7 @@ import { Order } from '../models/order';
     MatCardModule,
   ],
   styleUrls: ['./manage-orders.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './manage-orders.component.html'
 })
 export class ManageOrdersComponent implements OnInit, AfterViewInit {
