@@ -1,34 +1,23 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { ManageAttachmentsComponent } from './manage-attachments.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSortModule } from '@angular/material/sort';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ManageAttachmentsComponent', () => {
   let component: ManageAttachmentsComponent;
   let fixture: ComponentFixture<ManageAttachmentsComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        ManageAttachmentsComponent,
-        ReactiveFormsModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        BrowserAnimationsModule,
-        HttpClientTestingModule
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ManageAttachmentsComponent],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideNoopAnimations()
       ]
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ManageAttachmentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
