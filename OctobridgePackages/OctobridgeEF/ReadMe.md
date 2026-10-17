@@ -32,7 +32,7 @@ dotnet nuget add source --username gylest --password YOUR_GITHUB_PAT --store-pas
 Push the package to GitHub Packages:  
 
 ```cmd
-dotnet nuget push bin/Release/OctobridgeEF.1.2.0.nupkg --source github
+dotnet nuget push bin/Release/OctobridgeEF.1.5.0.nupkg --source Github-gylest
 ```
 
 ## Update GitHub Token when Expired
